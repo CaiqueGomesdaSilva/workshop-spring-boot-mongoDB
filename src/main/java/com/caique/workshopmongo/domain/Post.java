@@ -3,7 +3,9 @@ package com.caique.workshopmongo.domain;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
-
+import java.util.List;
+import java.util.ArrayList;
+import com.caique.workshopmongo.dto.CommentDTO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -20,11 +22,12 @@ public class Post implements Serializable{
 	private String title;
 	private String body;
 	private AuthorDTO author;
-	
+	private List<CommentDTO> comments = new ArrayList<>();
 	public Post() {
 		
 	}
 
+	
 	public Post(String id, Date date, String title, String body, AuthorDTO author) {
 		super();
 		this.id = id;
@@ -73,6 +76,18 @@ public class Post implements Serializable{
 	public void setBody(String body) {
 		this.body = body;
 	}
+
+	
+	
+	public List<CommentDTO> getComments() {
+		return comments;
+	}
+
+
+	public void setComments(List<CommentDTO> comments) {
+		this.comments = comments;
+	}
+
 
 	@Override
 	public int hashCode() {
